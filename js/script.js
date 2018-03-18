@@ -58,8 +58,31 @@ jQuery(function ($) {
 	$('.popular-goods__gallery').slick({
 		slidesToShow: 3,
   		swipeToSlide: true,
+  		// variableWidth: true,
   		prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-chevron-left"></button>',
   		nextArrow: '<button type="button" class="slick-next"><i class="fa fa-chevron-right"></button>',
+  		responsive: [
+		{
+		  breakpoint: 991,
+		  settings: {
+		    slidesToShow: 2,
+		  }
+		},
+		// {
+		//   breakpoint: 600,
+		//   settings: {
+		//     slidesToShow: 2,
+		//     slidesToScroll: 2
+		//   }
+		// },
+		// {
+		//   breakpoint: 480,
+		//   settings: {
+		//     slidesToShow: 1,
+		//     slidesToScroll: 1
+		//   }
+		// }
+		]
 	});
 
 	$('.nav-catalog-list a').click(function(){
@@ -69,6 +92,16 @@ jQuery(function ($) {
 		$(id).removeClass('hide');
 		$(this).parent().addClass('active');
 		return false
+	});
+});
+
+$('.menu-toggle').click(function(){
+	$('.menu').slideToggle(500, function(){
+		var menu = $(this);
+
+		if(menu.css('display') == 'none') {
+			menu.attr('style', '');
+		}
 	});
 });
 
