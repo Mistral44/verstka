@@ -45,14 +45,49 @@ jQuery(function ($) {
 		dots: true,
   		prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-chevron-left"></button>',
   		nextArrow: '<button type="button" class="slick-next"><i class="fa fa-chevron-right"></button>',
+  		responsive: [
+		{
+		  breakpoint: 768,
+		  settings: {
+		    arrows: false,
+		  }
+		},
+		]
 	});
 
 	$('.catalog-list').slick({
 		slidesToShow: 4,
   		swipeToSlide: true,
-  		variableWidth: true,
   		prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-chevron-left"></button>',
   		nextArrow: '<button type="button" class="slick-next"><i class="fa fa-chevron-right"></button>',
+  		responsive: [
+		{
+		  breakpoint: 1300,
+		  settings: {
+		    slidesToShow: 3,
+		  }
+		},
+		{
+		  breakpoint: 992,
+		  settings: {
+		  	slidesToShow: 2,
+		  }
+		},
+		{
+		  breakpoint: 768,
+		  settings: {
+		    slidesToShow: 2,
+		    arrows: false,
+		  }
+		},
+		{
+		  breakpoint: 600,
+		  settings: {
+		    slidesToShow: 1,
+		    arrows: false,
+		  }
+		}
+		]
 	});
 
 	$('.popular-goods__gallery').slick({
@@ -63,18 +98,17 @@ jQuery(function ($) {
   		nextArrow: '<button type="button" class="slick-next"><i class="fa fa-chevron-right"></button>',
   		responsive: [
 		{
-		  breakpoint: 991,
+		  breakpoint: 768,
 		  settings: {
 		    slidesToShow: 2,
 		  }
 		},
-		// {
-		//   breakpoint: 600,
-		//   settings: {
-		//     slidesToShow: 2,
-		//     slidesToScroll: 2
-		//   }
-		// },
+		{
+		  breakpoint: 600,
+		  settings: {
+		    slidesToShow: 3,
+		  }
+		},
 		// {
 		//   breakpoint: 480,
 		//   settings: {
@@ -91,6 +125,9 @@ jQuery(function ($) {
 		var id = $(this).attr('href');
 		$(id).removeClass('hide');
 		$(this).parent().addClass('active');
+		$('.slick-slider').each(function() {
+          $(this).slick("getSlick").refresh();
+        });
 		return false
 	});
 });
