@@ -510,6 +510,7 @@ h6 {
     font-weight: 700;
     padding: 11px 20px;
     border: 2px solid transparent;
+    white-space: nowrap;
 }
 .nav-catalog-list__item.active .nav-catalog-list__link,
 .nav-catalog-list__link:hover {
@@ -964,6 +965,20 @@ h6 {
     .about-wrap-img {
         display: none;
     }
+    .event-time {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+    .ds-element:last-child {
+        margin-right: 0;
+    }
+    .event-time__body {
+        margin-top: 30px;
+    }
+    .crew {
+        display: none;
+    }
     .catalog-wrap {
         width: 70%;
     }
@@ -1009,11 +1024,45 @@ h6 {
     .about-wrap-orders {
         height: 278px;
     }
-    .crew {
-        display: none;
+    .event-time {
+        display: block;
+        width: auto;
+        margin: 0 auto;
+    }
+    .event-time__body {
+        margin-top: 20px;
     }
     .catalog-wrap {
         width: auto;
+    }
+    .nav-catalog-list__link {
+        display: inline-block;
+    }
+    .nav-catalog-list button {
+        background-color: transparent;
+        border: none;
+        font-size: 17px;
+        height: 19px;
+        position: absolute;
+        display: block;
+    }
+    .nav-catalog-list .slick-prev {
+        left: 0;
+        top: 50%;
+        transform: translate(0, -50%);
+        z-index: 2;
+    }
+    .nav-catalog-list .slick-next {
+        right: 0;
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+    .footer-logo {
+        display: none;
+    }
+    .footer-call {
+        justify-content: space-around;
+        width: 100%;
     }
     .footer-menu {
         justify-content: space-around;
@@ -1056,9 +1105,6 @@ h6 {
     }
     .footer {
         margin: 0 -15px;
-    }
-    .footer-logo {
-        padding: 15px;
     }
     .footer-menu {
         padding: 15px;
@@ -1107,10 +1153,6 @@ h6 {
     .popular-goods__images {
         width: auto;
     }
-    .footer-logo {
-        width: 100%;
-        padding-bottom: 0;
-    }
     .footer-call {
         display: block;
     }
@@ -1127,4 +1169,25 @@ h6 {
     .footer-menu__item {
         text-align: center;
     }
+}
+
+@media (max-height: 450px) {
+    .header-wrap {
+        padding: 10px 20px;
+    }
+    .menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        margin-top: 0;
+        right: 0;
+        min-width: 200px;
+        padding: 0;
+    }
+    .menu-link {
+        display: block;
+        padding: 5px 20px;
+        font-size: 14px;
+    }
+    
 }

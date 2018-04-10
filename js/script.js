@@ -109,13 +109,6 @@ jQuery(function ($) {
 		    slidesToShow: 3,
 		  }
 		},
-		// {
-		//   breakpoint: 480,
-		//   settings: {
-		//     slidesToShow: 1,
-		//     slidesToScroll: 1
-		//   }
-		// }
 		]
 	});
 
@@ -125,7 +118,7 @@ jQuery(function ($) {
 		var id = $(this).attr('href');
 		$(id).removeClass('hide');
 		$(this).parent().addClass('active');
-		$('.slick-slider').each(function() {
+		$('.catalog-list').each(function() {
           $(this).slick("getSlick").refresh();
         });
 		return false
@@ -141,6 +134,37 @@ $('.menu-toggle').click(function(){
 		}
 	});
 });
+
+$nav_tabs_slider = $('.nav-catalog-list');
+	settings = {
+		slidesToShow: 1,
+		prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-chevron-left"></button>',
+  		nextArrow: '<button type="button" class="slick-next"><i class="fa fa-chevron-right"></button>',
+	}
+
+$nav_tabs_slider.on('afterChange', function(event, slick, currentSlide, nextSlide){
+		$(this).parents('.catalog-wrap').find('.catalog-cont').addClass('hide');
+		$(this).find('.slick-current').siblings().removeClass('active');
+		var id = $(this).find('.slick-current a').attr('href');
+		$(id).removeClass('hide');
+		$(this).find('.slick-current').addClass('active');
+		$('.catalog-list').each(function() {
+          $(this).slick("getSlick").refresh();
+        });
+		return false
+	})
+
+$(window).on('resize load', function(){
+	if($(window).width() > 750) {
+		if($nav_tabs_slider.hasClass('slick-initialized')) {
+			$nav_tabs_slider.slick('unslick')
+		}
+		return
+	}
+	if(!$nav_tabs_slider.hasClass('slick-initialized')) {
+		return $nav_tabs_slider.slick(settings)
+	}
+})
 
 function initMap() {
     var coordinates = {lat: 49.988820, lng: 36.232322}, // Координаты центра карты 
